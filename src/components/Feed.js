@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { collection, query, orderBy, onSnapshot, doc, runTransaction, updateDoc } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot, doc, runTransaction } from "firebase/firestore";
 
 const Feed = () => {
   const [updates, setUpdates] = useState([]);
