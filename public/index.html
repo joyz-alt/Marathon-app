@@ -3,6 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="robots" content="noindex">
+    <script>
+        if (window.location.pathname !== "/" && !window.location.pathname.startsWith("/Marathon-app/")) {
+            window.location.href = "/Marathon-app" + window.location.pathname;
+        }
+    </script>
+
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -18,21 +25,22 @@
 
 <body>
     <div id="root"></div>
-    
-    
+
+
     <footer id="sponsors">
         <h2>🍻 Sponsors Officiels 🍻</h2>
         <div class="sponsor-logos">
-          <div class="sponsor">
-            <img src="../images/vanb.png" alt="Logo V&B">
-            <p>La vraie hydratation commence après la ligne d’arrivée ! 🍷🍺</p>
-          </div>
-          <div class="sponsor">
-            <img src="../images/PMU.png" alt="Logo PMU">
-            <p>Pariez sur vous-même… mais pas comme au PMU ! 🐎🍹</p>
-          </div>
+            <div class="sponsor">
+                <img src="../images/vanb.png" alt="Logo V&B">
+                <p>La vraie hydratation commence après la ligne d’arrivée ! 🍷🍺</p>
+            </div>
+            <div class="sponsor">
+                <img src="../images/PMU.png" alt="Logo PMU">
+                <p>Pariez sur vous-même… mais pas comme au PMU ! 🐎🍹</p>
+            </div>
         </div>
-      </footer>
-      
+    </footer>
+
 </body>
+
 </html>
