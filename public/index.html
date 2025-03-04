@@ -4,18 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex">
-    <script>
-        if (window.location.pathname !== "/" && !window.location.pathname.startsWith("/Marathon-app/")) {
-            window.location.href = "/Marathon-app" + window.location.pathname;
-        }
-    </script>
-
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="description" content="Plan d'entraînement pour le Marathon" />
+    <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
@@ -26,16 +19,15 @@
 <body>
     <div id="root"></div>
 
-
     <footer id="sponsors">
         <h2>🍻 Sponsors Officiels 🍻</h2>
         <div class="sponsor-logos">
             <div class="sponsor">
-                <img src="../images/vanb.png" alt="Logo V&B">
+                <img src="/images/vanb.png" alt="Logo V&B">
                 <p>La vraie hydratation commence après la ligne d’arrivée ! 🍷🍺</p>
             </div>
             <div class="sponsor">
-                <img src="../images/PMU.png" alt="Logo PMU">
+                <img src="/images/PMU.png" alt="Logo PMU">
                 <p>Pariez sur vous-même… mais pas comme au PMU ! 🐎🍹</p>
             </div>
         </div>

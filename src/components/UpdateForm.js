@@ -4,23 +4,24 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useUser } from '../contexts/UserContext';
 
-const UpdateForm = () => {
+const UpdateForm = ({ selectedDay }) => {
   const [updateText, setUpdateText] = useState("");
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("");
   const [isLoading, setLoading] = useState(false);
   const user = useUser();
 
+  // Hide form if the user is NOT an admin
   if (!user || user.role !== 'admin') {
-    return <div style={{ color: "red", fontWeight: "bold", textAlign: "center" }}>
-      ⚠️ Access Denied: Only Admins Can Post Updates.
-    </div>;
+    return null;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) {
-      setStatus("Please log in to post updates.");
+    
+    // Ensure a day is selected
+    if (!selectedDay) {
+      setStatus("❌ Please select a day before posting.");
       return;
     }
 
@@ -35,11 +36,13 @@ const UpdateForm = () => {
         photoURL = await getDownloadURL(uploadResult.ref);
       }
 
+      // Save the update linked to the selected day
       await addDoc(collection(db, "updates"), {
         uid: user.uid,
         email: user.email,
         updateText,
         photoURL,
+        day: selectedDay, // Store the selected day
         timestamp: serverTimestamp(),
         likes: 0,
       });
@@ -57,7 +60,7 @@ const UpdateForm = () => {
 
   return (
     <div className="update-container">
-      <h2>📢 Post an Update</h2>
+      <h2>📢 Post an Update for {selectedDay || "Select a Day"}</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           value={updateText}
@@ -66,7 +69,7 @@ const UpdateForm = () => {
           disabled={isLoading}
         />
         <input type="file" onChange={(e) => setFile(e.target.files[0])} disabled={isLoading} />
-        <button type="submit" disabled={isLoading}>Publish</button>
+        <button type="submit" disabled={isLoading || !selectedDay}>Publish</button>
       </form>
       {status && <p className="status-message">{status}</p>}
     </div>

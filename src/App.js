@@ -1,6 +1,5 @@
-// src/App.js
-import React from "react";
-import { useUser } from "./contexts/UserContext"; // ensure this path is correct
+import React, { useState } from "react";
+import { useUser } from "./contexts/UserContext"; // Ensure this path is correct
 import Auth from "./components/Auth";
 import WorkoutPlan from "./components/WorkoutPlan";
 import UpdateForm from "./components/UpdateForm";
@@ -10,25 +9,38 @@ import Comments from "./components/Comments";
 import "./index.css";
 
 function App() {
-  const user = useUser(); // useUser will now handle the user state
+  const user = useUser(); 
+  const isAdmin = user?.role === "admin";
+
+  // 🆕 New State: Selected Day (Default Empty)
+  const [selectedDay, setSelectedDay] = useState("");
 
   if (!user) {
-    // Show Auth component only
     return <Auth />;
   }
 
-  // Admin check (replace 'admin' with your actual admin role identifier)
-  const isAdmin = user.role === 'admin';
-
   return (
     <div>
-      <h1>Plan d'entraînement Marathon de Callaghan</h1>
+      <h1>🏃‍♂️ Marathon Training Plan</h1>
+
       <CurrentDate />
+
+      {/* Day Selection Dropdown */}
+      <label>Select Day:</label>
+      <select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
+        <option value="">-- Choose a Day --</option>
+        {Array.from({ length: 7 }, (_, i) => (
+          <option key={i + 1} value={`Day ${i + 1}`}>Day {i + 1}</option>
+        ))}
+      </select>
+
       <WorkoutPlan />
-      {isAdmin && <UpdateForm />}
-      <Feed />
-      <Comments />
-      
+
+      {/* Only Show UpdateForm for Admins */}
+      {isAdmin && <UpdateForm selectedDay={selectedDay} />}
+
+      <Feed selectedDay={selectedDay} />
+      <Comments selectedDay={selectedDay} />
     </div>
   );
 }
