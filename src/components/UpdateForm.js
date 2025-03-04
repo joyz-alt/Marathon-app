@@ -1,27 +1,38 @@
 import React, { useState } from "react";
-import { db, storage } from "../firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { useUser } from '../contexts/UserContext';
+import { useUser } from "../contexts/UserContext";
 
-const UpdateForm = ({ selectedDay }) => {
+const UpdateForm = ({ selectedWeek, selectedDay }) => {
   const [updateText, setUpdateText] = useState("");
-  const [file, setFile] = useState(null);
+  const [imageBase64, setImageBase64] = useState("");
   const [status, setStatus] = useState("");
   const [isLoading, setLoading] = useState(false);
   const user = useUser();
 
-  // Hide form if the user is NOT an admin
-  if (!user || user.role !== 'admin') {
-    return null;
+  if (!user || user.role !== "admin") {
+    return null; // ✅ Hide form if not admin
   }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageBase64(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Ensure a day is selected
-    if (!selectedDay) {
-      setStatus("❌ Please select a day before posting.");
+    if (!user) {
+      setStatus("Please log in to post updates.");
+      return;
+    }
+    if (!selectedWeek || !selectedDay) {
+      setStatus("⚠️ Please select a week and day.");
       return;
     }
 
@@ -29,27 +40,20 @@ const UpdateForm = ({ selectedDay }) => {
     setStatus("");
 
     try {
-      let photoURL = "";
-      if (file) {
-        const fileRef = ref(storage, `updates/${Date.now()}_${file.name}`);
-        const uploadResult = await uploadBytes(fileRef, file);
-        photoURL = await getDownloadURL(uploadResult.ref);
-      }
-
-      // Save the update linked to the selected day
       await addDoc(collection(db, "updates"), {
         uid: user.uid,
         email: user.email,
         updateText,
-        photoURL,
-        day: selectedDay, // Store the selected day
+        imageBase64,
+        semaine: selectedWeek, // ✅ Include selectedWeek
+        day: selectedDay, // ✅ Include selectedDay
         timestamp: serverTimestamp(),
         likes: 0,
       });
 
       setStatus("✅ Update posted successfully!");
       setUpdateText("");
-      setFile(null);
+      setImageBase64("");
     } catch (error) {
       console.error("Error saving the update:", error);
       setStatus("❌ Failed to post update.");
@@ -60,16 +64,16 @@ const UpdateForm = ({ selectedDay }) => {
 
   return (
     <div className="update-container">
-      <h2>📢 Post an Update for {selectedDay || "Select a Day"}</h2>
+      <h2>📢 Post an Update</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           value={updateText}
           onChange={(e) => setUpdateText(e.target.value)}
-          placeholder="Describe what you did today..."
+          placeholder="Describe your run..."
           disabled={isLoading}
         />
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} disabled={isLoading} />
-        <button type="submit" disabled={isLoading || !selectedDay}>Publish</button>
+        <input type="file" onChange={handleImageChange} disabled={isLoading} />
+        <button type="submit" disabled={isLoading}>Publish</button>
       </form>
       {status && <p className="status-message">{status}</p>}
     </div>

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useUser } from "./contexts/UserContext"; // Ensure this path is correct
+import { useUser } from "./contexts/UserContext";
 import Auth from "./components/Auth";
 import WorkoutPlan from "./components/WorkoutPlan";
 import UpdateForm from "./components/UpdateForm";
 import Feed from "./components/Feed";
-import CurrentDate from "./components/CurrentDate";
 import Comments from "./components/Comments";
 import "./index.css";
 
@@ -12,7 +11,8 @@ function App() {
   const user = useUser(); 
   const isAdmin = user?.role === "admin";
 
-  // 🆕 New State: Selected Day (Default Empty)
+  // ✅ Keep Week & Day selection state here so all components can use it
+  const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
 
   if (!user) {
@@ -23,24 +23,22 @@ function App() {
     <div>
       <h1>🏃‍♂️ Marathon Training Plan</h1>
 
-      <CurrentDate />
+      {/* ✅ Pass week & day state to WorkoutPlan */}
+      <WorkoutPlan 
+        selectedWeek={selectedWeek} 
+        setSelectedWeek={setSelectedWeek} 
+        selectedDay={selectedDay} 
+        setSelectedDay={setSelectedDay} 
+      />
 
-      {/* Day Selection Dropdown */}
-      <label>Select Day:</label>
-      <select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
-        <option value="">-- Choose a Day --</option>
-        {Array.from({ length: 7 }, (_, i) => (
-          <option key={i + 1} value={`Day ${i + 1}`}>Day {i + 1}</option>
-        ))}
-      </select>
+      {/* ✅ Ensure updates are posted to the correct week & day */}
+      {isAdmin && <UpdateForm selectedWeek={selectedWeek} selectedDay={selectedDay} />}
 
-      <WorkoutPlan />
-
-      {/* Only Show UpdateForm for Admins */}
-      {isAdmin && <UpdateForm selectedDay={selectedDay} />}
-
-      <Feed selectedDay={selectedDay} />
-      <Comments selectedDay={selectedDay} />
+      {/* ✅ Updates appear below WorkoutPlan & are filtered by week/day */}
+      <Feed selectedWeek={selectedWeek} selectedDay={selectedDay} />
+      
+      {/* ✅ Comments are also linked to the selected week & day */}
+      <Comments selectedWeek={selectedWeek} selectedDay={selectedDay} />
     </div>
   );
 }

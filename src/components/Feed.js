@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, query, where, orderBy, onSnapshot, doc, runTransaction } from "firebase/firestore";
 
-const Feed = ({ selectedDay }) => {
+const Feed = ({ selectedWeek, selectedDay }) => {  
   const [updates, setUpdates] = useState([]);
 
   useEffect(() => {
-    if (!selectedDay) return; // Don't fetch anything if no day is selected
+    if (!selectedWeek || !selectedDay) return; // ✅ Ensure both are selected before querying
 
     const q = query(
       collection(db, "updates"),
-      where("day", "==", selectedDay), // Filter updates for the selected day
-      orderBy("timestamp", "desc")
+      where("semaine", "==", selectedWeek),  
+      where("day", "==", selectedDay),       
+      orderBy("timestamp", "desc") // ✅ Ensure Firestore index includes this
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -25,7 +26,7 @@ const Feed = ({ selectedDay }) => {
     });
 
     return () => unsubscribe();
-  }, [selectedDay]);
+  }, [selectedWeek, selectedDay]); // ✅ Only runs when week or day changes
 
   const likeUpdate = async (updateId) => {
     const updateDocRef = doc(db, "updates", updateId);
@@ -45,18 +46,25 @@ const Feed = ({ selectedDay }) => {
 
   return (
     <div>
-      <h2>📜 Updates for {selectedDay || "Select a Day"}</h2>
+      <h2>📜 Updates for Week {selectedWeek} - {selectedDay}</h2>
 
-      {selectedDay && updates.length === 0 ? (
-        <p>No updates for {selectedDay} yet.</p>
+      {selectedWeek && selectedDay && updates.length === 0 ? (
+        <p>No updates for this day yet.</p>
       ) : (
         updates.map((update) => (
           <div key={update.id} className="feed-item">
             <h4>{update.email}</h4>
             <p>{update.updateText}</p>
-            {update.photoURL && (
-              <img src={update.photoURL} alt="Mise à jour" />
+            
+            {/* ✅ Fix: Display Base64 image instead of Firebase Storage URL */}
+            {update.imageBase64 && (
+              <img 
+                src={update.imageBase64} 
+                alt="Update" 
+                style={{ maxWidth: "100%", borderRadius: "8px" }}
+              />
             )}
+
             <p>
               <small>
                 {update.timestamp

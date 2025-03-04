@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { trainingPlan } from "../trainingPlan"; // Ensure trainingPlan is imported
+import React from "react";
+import { trainingPlan } from "../trainingPlan"; 
 
-const WorkoutPlan = () => {
-  const [selectedWeek, setSelectedWeek] = useState("");
-  const [selectedDay, setSelectedDay] = useState("");
-
+const WorkoutPlan = ({ selectedWeek, setSelectedWeek, selectedDay, setSelectedDay }) => {
   const handleWeekChange = (e) => {
     setSelectedWeek(e.target.value);
-    setSelectedDay("");
+    setSelectedDay(""); // Reset day selection when week changes
   };
 
   const handleDayChange = (e) => {
