@@ -158,7 +158,8 @@ button:hover {
 
 /* Each day card is a "slide" in the carousel */
 .day-card {
-  min-width: 130px; /* ensure consistent card size for mobile */
+  min-width: 240px;
+  margin-right: 12px; /* ensure consistent card size for mobile */
   background: #292929;
   border: 1px solid #444;
   border-radius: 8px;
