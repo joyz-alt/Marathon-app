@@ -166,6 +166,7 @@ button:hover {
   overflow-x: auto; /* horizontal scroll */
   scroll-snap-type: x mandatory; /* optional for snap-scrolling effect */
   padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Each day card is a "slide" in the carousel */
