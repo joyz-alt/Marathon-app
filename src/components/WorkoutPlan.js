@@ -1,5 +1,5 @@
 import React from "react";
-import { trainingPlan } from "../trainingPlan"; 
+import { trainingPlan } from "../trainingPlan";
 
 const WorkoutPlan = ({ selectedWeek, setSelectedWeek, selectedDay, setSelectedDay }) => {
   const handleWeekChange = (e) => {
@@ -9,6 +9,24 @@ const WorkoutPlan = ({ selectedWeek, setSelectedWeek, selectedDay, setSelectedDa
 
   const handleDayChange = (e) => {
     setSelectedDay(e.target.value);
+  };
+
+  const getWeekLabel = (week) => {
+    let label = `S${week}`;
+
+    if (week <= 4) {
+      label += " - Construction de l’endurance";
+    } else if (week >= 5 && week <= 7) {
+      label += " - Augmentation du volume et de l’intensité";
+    } else {
+      label += " - Affinage et préparation finale";
+    }
+
+    if ([4, 7, 12].includes(Number(week))) {
+      label += " (allégée)";
+    }
+
+    return label;
   };
 
   const renderPlan = () => {
@@ -34,7 +52,7 @@ const WorkoutPlan = ({ selectedWeek, setSelectedWeek, selectedDay, setSelectedDa
         <select value={selectedWeek} onChange={handleWeekChange}>
           <option value="">-- Sélectionnez une semaine --</option>
           {Object.keys(trainingPlan).map((week) => (
-            <option key={week} value={week}>Semaine {week}</option>
+            <option key={week} value={week}>{getWeekLabel(week)}</option>
           ))}
         </select>
 
