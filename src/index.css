@@ -12,9 +12,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  min-height: 100vh;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  
 }
+
 
 
 
@@ -142,27 +145,11 @@ button:hover {
   text-align: center;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
-
-/* Subtle fade-in animation for the entire container */
-.fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-@keyframes fadeIn {
-  0%   { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0px); }
-}
-
-.carousel-title {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #1DB954; /* your accent color, or leave white if you prefer */
-}
-
-/* Horizontal scrolling container for day cards */
 .carousel-scroll-area {
   display: flex;
   flex-direction: row;
   gap: 12px;
+  touch-action: pan-y;
   overflow-x: auto; /* horizontal scroll */
   scroll-snap-type: x mandatory; /* optional for snap-scrolling effect */
   padding-bottom: 10px;
@@ -180,6 +167,23 @@ button:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   flex-shrink: 0; /* maintain card width when scrolling */
 }
+
+/* Subtle fade-in animation for the entire container */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+.carousel-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #1DB954; /* your accent color, or leave white if you prefer */
+}
+
+
 
 /* Title for each day */
 .day-title {
@@ -223,28 +227,6 @@ button:hover {
   border-radius: 10px;
 }
 
-@media (max-width: 600px) {
-  .calendar-carousel-container {
-    padding: 10px;
-    max-width: 100%;
-  }
-  .carousel-title {
-    font-size: 18px;
-  }
-  .day-card {
-    min-width: 120px;
-    padding: 8px;
-  }
-  .day-title {
-    font-size: 14px;
-  }
-  .day-type,
-  .day-distance,
-  .day-pace,
-  .day-notes {
-    font-size: 12px;
-  }
-}
 
 
 
@@ -525,23 +507,7 @@ option small {
 
 
 
-/* ========== PROGRESS BAR ========== */
-.progress-bar {
-  background: #333;
-  border-radius: 8px;
-  height: 20px;
-  width: 100%;
-  margin: 10px 0;
-  overflow: hidden;
-  position: relative;
-}
 
-.progress-fill {
-  background: #1DB954;
-  height: 100%;
-  width: 0%;
-  transition: width 0.4s ease;
-}
 
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 600px) {
