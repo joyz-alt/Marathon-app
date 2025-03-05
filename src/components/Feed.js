@@ -15,7 +15,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
     const q = query(
       collection(db, "updates"),
       where("semaine", "==", selectedWeek),
-      where("day", "==", selectedDay), 
+      where("day", "==", selectedDay),
       orderBy("timestamp", "desc")
     );
 
@@ -26,7 +26,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
       }));
       setUpdates(updatesData);
     });
-    
+
 
     return () => unsubscribe();
   }, [selectedWeek, selectedDay]);
@@ -36,7 +36,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
       alert("You must be logged in to like a post.");
       return;
     }
-  
+
     const updateDocRef = doc(db, "updates", updateId);
     try {
       await runTransaction(db, async (transaction) => {
@@ -44,11 +44,11 @@ const Feed = ({ selectedWeek, selectedDay }) => {
         if (!updateDoc.exists()) {
           throw new Error("Document does not exist!");
         }
-  
+
         const updateData = updateDoc.data();
         const currentLikes = updateData.likes || 0;
         const likedBy = updateData.likedBy || [];
-  
+
         if (likedBy.includes(userId)) {
           // If user already liked, remove like
           transaction.update(updateDocRef, {
@@ -67,7 +67,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
       console.error("Error updating like:", error);
     }
   };
-  
+
   return (
     <div className="container">
       <h2>📜 MAJ semaine {selectedWeek} - {selectedDay}</h2>
@@ -77,7 +77,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
       ) : (
         updates.map((update) => (
           <div key={update.id} className="feed-item">
-            <p>{update.updateText}</p>
+            <p><strong>{update.username || "Anonymous"}:</strong> {update.updateText}</p>
 
             {update.images && update.images.length > 0 && (
               <div className="container">

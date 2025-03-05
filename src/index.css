@@ -58,25 +58,78 @@ button:hover {
 }
 
 /* ========== AUTH SECTION ========== */
+/* ========== AUTH FORM ========== */
 #auth-section {
   width: 90%;
   max-width: 400px;
   background: #1c1c1c;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 
 #auth-section h2 {
   color: #1DB954;
-  font-size: 22px;
-  margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
+#auth-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#auth-section input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: #f2f2f2;
+  font-size: 16px;
+}
+
+#auth-section input:focus {
+  outline: 2px solid #1DB954;
+}
+
+/* ========== LOGOUT BUTTON ========== */
+.logout-button {
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px auto; /* ✅ Centers in flexbox */
+  display: block;
+}
+
+.logout-button:hover {
+  background: #c9302c;
+  transform: scale(1.05);
+}
+
+
+.auth-toggle {
+  margin-top: 12px;
+  color: #bbb;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-toggle:hover {
+  color: #1DB954;
+}
+
+/* Status message */
 #auth-status {
+  margin-top: 12px;
   font-size: 14px;
-  margin-top: 10px;
   color: #bbb;
 }
 
@@ -165,6 +218,7 @@ option small {
 
 /* ========== SECTION SPONSORS ========== */
 
+/* ========== SPONSORS SECTION ========== */
 .footer-container {
   width: 100%;
   max-width: 600px;
@@ -176,8 +230,7 @@ option small {
   text-align: center;
 }
 
-
-#sponsors h2 {
+.footer-container h2 {
   color: #1DB954;
   font-size: 24px;
   margin-bottom: 20px;
@@ -210,6 +263,7 @@ option small {
   font-size: 14px;
   color: #bbb;
 }
+
 
 
 /* ========== UPDATE FORM (Admin Only) ========== */

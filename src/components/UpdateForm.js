@@ -38,14 +38,14 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
         });
       })
     );
-  
+
     Promise.all(imagePromises)
       .then((compressedImages) => {
         setImageBase64((prevImages) => [...prevImages, ...compressedImages]);
       })
       .catch((err) => console.error("Error compressing images:", err));
   };
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,6 +68,7 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
     try {
       await addDoc(collection(db, "updates"), {
         uid: user.uid,
+        username: user.displayName,  // ✅ Save username
         email: user.email,
         updateText,
         images: imageBase64,
@@ -76,6 +77,7 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
         timestamp: serverTimestamp(),
         likes: 0,
       });
+      
 
       setStatus("✅ Update posted successfully!");
       setUpdateText("");
@@ -105,13 +107,13 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
         />
         <input type="file" ref={fileInputRef} onChange={handleImageChange} disabled={isLoading} />
         {/* Preview images before posting */}
-{imageBase64.length > 0 && (
-  <div className="image-preview-container">
-    {imageBase64.map((img, index) => (
-      <img key={index} src={img} alt={`Preview ${index}`} className="preview-image" />
-    ))}
-  </div>
-)}
+        {imageBase64.length > 0 && (
+          <div className="image-preview-container">
+            {imageBase64.map((img, index) => (
+              <img key={index} src={img} alt={`Preview ${index}`} className="preview-image" />
+            ))}
+          </div>
+        )}
 
         <button type="submit" disabled={isLoading}>Publish</button>
       </form>

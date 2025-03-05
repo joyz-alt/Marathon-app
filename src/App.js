@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useUser } from "./contexts/UserContext";
+import { auth } from "./firebase";
+import { signOut } from "firebase/auth";
 import Auth from "./components/Auth";
 import WorkoutPlan from "./components/WorkoutPlan";
 import UpdateForm from "./components/UpdateForm";
 import Feed from "./components/Feed";
 import Comments from "./components/Comments";
+import Sponsors from "./components/Sponsors"; // ✅ Import Sponsors component
 import "./index.css";
 
 function App() {
@@ -15,6 +18,11 @@ function App() {
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
 
+  const handleLogout = async () => {
+    await signOut(auth);
+    window.location.reload(); // Refresh page after logout
+  };
+
   if (!user) {
     return <Auth />;
   }
@@ -24,6 +32,7 @@ function App() {
       <div className="header-container">
         <h1>🏃‍♂️ Plan d'Entrainement de Callaghan 🏃‍♂️</h1>
       </div>
+
       {/* ✅ Pass week & day state to WorkoutPlan */}
       <WorkoutPlan
         selectedWeek={selectedWeek}
@@ -40,6 +49,11 @@ function App() {
 
       {/* ✅ Comments are also linked to the selected week & day */}
       <Comments selectedWeek={selectedWeek} selectedDay={selectedDay} />
+
+      {/* ✅ Add Sponsors Section */}
+      <Sponsors />
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
+
     </div>
   );
 }
