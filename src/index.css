@@ -95,7 +95,7 @@ button:hover {
 @media (max-width:600px) {
   .header-container h1 {
     padding: 15px;
-    font-size:22px;
+    font-size: 22px;
   }
 }
 
@@ -142,7 +142,6 @@ option small {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -263,26 +262,59 @@ option small {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
-  width: 100%;
-  max-width: 500px;
-  margin: 10px auto;
-  background: #1e1e1e;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
+  margin: 10px;
 }
 
-.image-container img {
-  width: 100%;
-  max-width: 400px;
-  /* Increased from 230px */
-  height: auto;
-  max-height: 300px;
+/* Clickable images in feed */
+.clickable-image {
+  margin:5px;
+  width: 120px; /* Small preview */
+  height: 180px;
   border-radius: 8px;
-  object-fit: contain;
-  /* Keeps images sharp */
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
+.clickable-image:hover {
+  transform: scale(1.1);
+}
+
+/* Fullscreen modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Image previews before posting */
+.image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-image {
+  width: 100px;
+  /* Adjust preview size */
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
 
 
 /* ========== PROGRESS BAR ========== */

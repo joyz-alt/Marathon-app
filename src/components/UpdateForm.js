@@ -38,13 +38,14 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
         });
       })
     );
-
+  
     Promise.all(imagePromises)
       .then((compressedImages) => {
         setImageBase64((prevImages) => [...prevImages, ...compressedImages]);
       })
       .catch((err) => console.error("Error compressing images:", err));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,6 +104,15 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
           disabled={isLoading}
         />
         <input type="file" ref={fileInputRef} onChange={handleImageChange} disabled={isLoading} />
+        {/* Preview images before posting */}
+{imageBase64.length > 0 && (
+  <div className="image-preview-container">
+    {imageBase64.map((img, index) => (
+      <img key={index} src={img} alt={`Preview ${index}`} className="preview-image" />
+    ))}
+  </div>
+)}
+
         <button type="submit" disabled={isLoading}>Publish</button>
       </form>
       {status && <p className="status-message">{status}</p>}
