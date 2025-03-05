@@ -40,7 +40,7 @@ select:focus {
 
 /* ========== BUTTON STYLES ========== */
 button {
-  background: #1DB954;
+  background: #1db95474;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -94,6 +94,159 @@ button:hover {
 #auth-section input:focus {
   outline: 2px solid #1DB954;
 }
+
+
+/* ========== WELCOME MESSAGE ========== */
+.welcome-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #1db95474, #117A37);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+
+
+.welcome-container h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.user-id {
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.app-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.calendar-carousel-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #1e1e1e;
+  padding: 16px;
+  border-radius: 8px;
+  color: #f2f2f2;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Subtle fade-in animation for the entire container */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+.carousel-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #1DB954; /* your accent color, or leave white if you prefer */
+}
+
+/* Horizontal scrolling container for day cards */
+.carousel-scroll-area {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto; /* horizontal scroll */
+  scroll-snap-type: x mandatory; /* optional for snap-scrolling effect */
+  padding-bottom: 10px;
+}
+
+/* Each day card is a "slide" in the carousel */
+.day-card {
+  min-width: 130px; /* ensure consistent card size for mobile */
+  background: #292929;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  scroll-snap-align: start; /* if you want snapping */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  flex-shrink: 0; /* maintain card width when scrolling */
+}
+
+/* Title for each day */
+.day-title {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 4px;
+}
+
+/* Workout type or description */
+.day-type {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+/* Distance, pace, notes, etc. */
+.day-distance, .day-pace, .day-notes {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.day-distance {
+  color: #bbb;
+}
+
+.day-notes {
+  font-style: italic;
+  color: #aaa;
+}
+
+/* Optional scroll bar styling (only visible if content is large) */
+.carousel-scroll-area::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel-scroll-area::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+.carousel-scroll-area::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .calendar-carousel-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+  .carousel-title {
+    font-size: 18px;
+  }
+  .day-card {
+    min-width: 120px;
+    padding: 8px;
+  }
+  .day-title {
+    font-size: 14px;
+  }
+  .day-type,
+  .day-distance,
+  .day-pace,
+  .day-notes {
+    font-size: 12px;
+  }
+}
+
+
+
 
 /* ========== LOGOUT BUTTON ========== */
 .logout-button {

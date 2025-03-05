@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { collection, addDoc, query, where, orderBy, onSnapshot, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
 
-const Comments = ({ selectedWeek, selectedDay }) => {
+const Comments = ({ selectedWeek, selectedDay, user }) => {
   const [comments, setComments] = useState([]);
-  const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
 
   useEffect(() => {
-    console.log("Selected Week in Comments:", selectedWeek);
-    console.log("Selected Day in Comments:", selectedDay);
-
     if (!selectedWeek || !selectedDay) return;
 
     const commentsRef = collection(db, "comments");
@@ -26,7 +30,7 @@ const Comments = ({ selectedWeek, selectedDay }) => {
         id: doc.id,
         ...doc.data(),
       }));
-      setComments(commentsList);  // ✅ Correct function instead of setUpdates
+      setComments(commentsList);
     });
 
     return () => unsubscribe();
@@ -34,20 +38,28 @@ const Comments = ({ selectedWeek, selectedDay }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!selectedWeek || !selectedDay) {
-      alert("Please select a week and day before posting a comment.");
+      alert("⚠️ Please select a week and day before posting a comment.");
+      return;
+    }
+    if (!user) {
+      alert("⚠️ You must be logged in to post a comment.");
+      return;
+    }
+    if (!comment.trim()) {
+      alert("⚠️ Your comment cannot be empty.");
       return;
     }
 
     await addDoc(collection(db, "comments"), {
-      username,
+      username: user.username, // ✅ Use the parent's user object
       comment,
-      semaine: selectedWeek, // ✅ Store selected week
-      jour: selectedDay,     // ✅ Store selected day
+      semaine: selectedWeek,
+      jour: selectedDay,
       timestamp: serverTimestamp(),
     });
 
-    setUsername("");
     setComment("");
   };
 
@@ -56,34 +68,27 @@ const Comments = ({ selectedWeek, selectedDay }) => {
       <h3>📝 Commentaire semaine {selectedWeek} - {selectedDay}</h3>
 
       {selectedWeek && selectedDay && comments.length === 0 ? (
-        <p>Toujours pas de commentaire today</p>
+        <p>Toujours pas de commentaire</p>
       ) : (
         comments.map((c) => (
           <div key={c.id} className="comment-list p">
-
             <p>
-              <strong>{c.username} </strong>
-              <div>: {c.comment} </div>
+              <strong>{c.username}</strong>: {c.comment}
             </p>
           </div>
         ))
       )}
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Your name"
-          className="comment-input"
-        />
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          placeholder="Your comment"
+          placeholder="Votre commentaire..."
           className="comment-input"
         />
-        <button type="submit" className="comment-button">Envoyer</button>
+        <button type="submit" className="comment-button">
+          Envoyer
+        </button>
       </form>
     </div>
   );

@@ -1,16 +1,14 @@
 import React, { useState, useRef } from "react";
 import { db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { useUser } from "../contexts/UserContext";
 import Compressor from "compressorjs";
 
-const UpdateForm = ({ selectedWeek, selectedDay }) => {
+const UpdateForm = ({ selectedWeek, selectedDay, user }) => {
   const [updateText, setUpdateText] = useState("");
   const [imageBase64, setImageBase64] = useState([]);
   const [status, setStatus] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const fileInputRef = useRef(null); // ✅ Reference for file input
-  const user = useUser();
+  const fileInputRef = useRef(null);
 
   if (!user || user.role !== "admin") {
     return null; // ✅ Hide form if not admin
@@ -46,7 +44,6 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
       .catch((err) => console.error("Error compressing images:", err));
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -68,8 +65,7 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
     try {
       await addDoc(collection(db, "updates"), {
         uid: user.uid,
-        username: user.displayName,  // ✅ Save username
-        email: user.email,
+        username: user.username, // ✅ Save username instead of UID
         updateText,
         images: imageBase64,
         semaine: selectedWeek,
@@ -77,13 +73,11 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
         timestamp: serverTimestamp(),
         likes: 0,
       });
-      
 
       setStatus("✅ Update posted successfully!");
       setUpdateText("");
-      setImageBase64([]); // ✅ Clear images after submission
+      setImageBase64([]);
 
-      // ✅ Reset file input
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -106,15 +100,6 @@ const UpdateForm = ({ selectedWeek, selectedDay }) => {
           disabled={isLoading}
         />
         <input type="file" ref={fileInputRef} onChange={handleImageChange} disabled={isLoading} />
-        {/* Preview images before posting */}
-        {imageBase64.length > 0 && (
-          <div className="image-preview-container">
-            {imageBase64.map((img, index) => (
-              <img key={index} src={img} alt={`Preview ${index}`} className="preview-image" />
-            ))}
-          </div>
-        )}
-
         <button type="submit" disabled={isLoading}>Publish</button>
       </form>
       {status && <p className="status-message">{status}</p>}
