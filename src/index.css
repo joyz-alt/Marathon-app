@@ -229,26 +229,18 @@ button:hover {
 
 @media (max-width: 600px) {
   .calendar-carousel-container {
-    padding: 10px;
+    /* Keep top/bottom padding only, so you don't cause too wide a container on small screens */
+    padding: 10px 0;
     max-width: 100%;
   }
-  .carousel-title {
-    font-size: 18px;
-  }
+
   .day-card {
-    min-width: 120px;
+    min-width: 140px;  /* Instead of 120px */
     padding: 8px;
   }
-  .day-title {
-    font-size: 14px;
-  }
-  .day-type,
-  .day-distance,
-  .day-pace,
-  .day-notes {
-    font-size: 12px;
-  }
+  /* You can keep or slightly adjust other font-sizes too */
 }
+
 
 
 
