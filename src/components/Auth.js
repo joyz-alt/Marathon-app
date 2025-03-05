@@ -81,7 +81,7 @@ const Auth = ({ setUser }) => {
         {isRegistering && (
           <input type="text" placeholder="Nom d'utilisateur" value={username} onChange={(e) => setUsername(e.target.value)} required />
         )}
-        <input type="text" placeholder="Email ou Nom d'utilisateur" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit">{isRegistering ? "S'inscrire" : "Se connecter"}</button>
       </form>
