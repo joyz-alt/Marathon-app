@@ -15,7 +15,6 @@ body {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;  
 }
 
 
@@ -154,6 +153,7 @@ button:hover {
   scroll-snap-type: x mandatory; /* optional for snap-scrolling effect */
   padding-bottom: 10px;
   -webkit-overflow-scrolling: touch;
+  outline: 2px dashed red; /* Just for debugging */
 }
 
 /* Each day card is a "slide" in the carousel */
