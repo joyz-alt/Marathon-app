@@ -9,15 +9,17 @@ const Feed = ({ selectedWeek, selectedDay }) => {
   const [user] = useAuthState(auth); // Get the currently logged-in user
 
   useEffect(() => {
+    console.log("Selected Week:", selectedWeek);
+    console.log("Selected Day:", selectedDay);
     if (!selectedWeek || !selectedDay) return;
-
+  
     const q = query(
       collection(db, "updates"),
       where("semaine", "==", selectedWeek),
-      where("day", "==", selectedDay),
+      where("day", "==", selectedDay), 
       orderBy("timestamp", "desc")
     );
-
+  
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const updatesData = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -27,9 +29,10 @@ const Feed = ({ selectedWeek, selectedDay }) => {
     }, (error) => {
       console.error("Error loading updates:", error);
     });
-
+  
     return () => unsubscribe();
   }, [selectedWeek, selectedDay]);
+  
 
   const likeUpdate = async (updateId, userId) => {
     if (!userId) {
@@ -71,7 +74,7 @@ const Feed = ({ selectedWeek, selectedDay }) => {
 
   return (
     <div className="container">
-      <h2>📜 Updates for Week {selectedWeek} - {selectedDay}</h2>
+      <h2>📜 MAJ semaine {selectedWeek} - {selectedDay}</h2>
 
       {selectedWeek && selectedDay && updates.length === 0 ? (
         <p>No updates for this day yet.</p>

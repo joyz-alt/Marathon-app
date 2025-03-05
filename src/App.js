@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      <h1>🏃‍♂️ Marathon Training Plan</h1>
+      <h1>🏃‍♂️ Plan d'Entrainement de Callaghan 🏃‍♂️</h1>
 
       {/* ✅ Pass week & day state to WorkoutPlan */}
       <WorkoutPlan 
