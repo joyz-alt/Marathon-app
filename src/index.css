@@ -227,6 +227,28 @@ button:hover {
   border-radius: 10px;
 }
 
+@media (max-width: 600px) {
+  .calendar-carousel-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+  .carousel-title {
+    font-size: 18px;
+  }
+  .day-card {
+    min-width: 120px;
+    padding: 8px;
+  }
+  .day-title {
+    font-size: 14px;
+  }
+  .day-type,
+  .day-distance,
+  .day-pace,
+  .day-notes {
+    font-size: 12px;
+  }
+}
 
 
 
