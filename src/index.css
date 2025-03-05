@@ -203,6 +203,8 @@ button:hover {
 }
 
 .comment-list p {
+  display: flex;
+  text-align: center;
   background: #222;
   padding: 12px;
   border-left: 4px solid #1DB954;

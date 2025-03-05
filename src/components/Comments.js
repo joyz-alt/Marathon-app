@@ -10,9 +10,9 @@ const Comments = ({ selectedWeek, selectedDay }) => {
   useEffect(() => {
     console.log("Selected Week in Comments:", selectedWeek);
     console.log("Selected Day in Comments:", selectedDay);
-    
+
     if (!selectedWeek || !selectedDay) return;
-  
+
     const commentsRef = collection(db, "comments");
     const q = query(
       commentsRef,
@@ -20,7 +20,7 @@ const Comments = ({ selectedWeek, selectedDay }) => {
       where("jour", "==", selectedDay),
       orderBy("timestamp", "desc")
     );
-  
+
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const commentsList = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -28,10 +28,10 @@ const Comments = ({ selectedWeek, selectedDay }) => {
       }));
       setComments(commentsList);  // ✅ Correct function instead of setUpdates
     });
-  
+
     return () => unsubscribe();
-  }, [selectedWeek, selectedDay]); 
-  
+  }, [selectedWeek, selectedDay]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedWeek || !selectedDay) {
@@ -52,7 +52,7 @@ const Comments = ({ selectedWeek, selectedDay }) => {
   };
 
   return (
-    <div className="comments-section">
+    <div className="container">
       <h3>📝 Commentaire semaine {selectedWeek} - {selectedDay}</h3>
 
       {selectedWeek && selectedDay && comments.length === 0 ? (
@@ -60,13 +60,10 @@ const Comments = ({ selectedWeek, selectedDay }) => {
       ) : (
         comments.map((c) => (
           <div key={c.id} className="comment-list p">
-            <strong>{c.username}</strong> - <small>
-                {c.timestamp && c.timestamp.seconds
-                  ? new Date(c.timestamp.seconds * 1000).toLocaleString()
-                  : "No timestamp available"}
-              </small>
+
             <p>
-              {c.comment}
+              <strong>{c.username} </strong>
+              <div>: {c.comment} </div>
             </p>
           </div>
         ))
