@@ -69,7 +69,7 @@ const Auth = ({ user, setUser }) => {
   };
 
   return (
-    <div id="auth-section">
+    <div id="auth-section" className="container">
       {user ? (
         <div>
           <h2>Welcome, {user.username || "User"}! 🎉</h2>
