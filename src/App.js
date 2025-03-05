@@ -8,7 +8,7 @@ import Comments from "./components/Comments";
 import "./index.css";
 
 function App() {
-  const user = useUser(); 
+  const user = useUser();
   const isAdmin = user?.role === "admin";
 
   // ✅ Keep Week & Day selection state here so all components can use it
@@ -21,14 +21,15 @@ function App() {
 
   return (
     <div>
-      <h1>🏃‍♂️ Plan d'Entrainement de Callaghan 🏃‍♂️</h1>
-
+      <div className="header-container">
+        <h1>🏃‍♂️ Plan d'Entrainement de Callaghan 🏃‍♂️</h1>
+      </div>
       {/* ✅ Pass week & day state to WorkoutPlan */}
-      <WorkoutPlan 
-        selectedWeek={selectedWeek} 
-        setSelectedWeek={setSelectedWeek} 
-        selectedDay={selectedDay} 
-        setSelectedDay={setSelectedDay} 
+      <WorkoutPlan
+        selectedWeek={selectedWeek}
+        setSelectedWeek={setSelectedWeek}
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
       />
 
       {/* ✅ Ensure updates are posted to the correct week & day */}
@@ -36,7 +37,7 @@ function App() {
 
       {/* ✅ Updates appear below WorkoutPlan & are filtered by week/day */}
       <Feed selectedWeek={selectedWeek} selectedDay={selectedDay} />
-      
+
       {/* ✅ Comments are also linked to the selected week & day */}
       <Comments selectedWeek={selectedWeek} selectedDay={selectedDay} />
     </div>
