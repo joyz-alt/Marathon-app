@@ -49,21 +49,21 @@ const Comments = ({ selectedWeek, selectedDay }) => {
   };
 
   return (
-    <div>
-      <h3>📝 Comments for Week {selectedWeek} - {selectedDay}</h3>
+    <div className="comments-section">
+      <h3>📝 Commentaire pour la semaine {selectedWeek} - {selectedDay}</h3>
 
       {selectedWeek && selectedDay && comments.length === 0 ? (
-        <p>No comments for this day yet.</p>
+        <p>Toujours pas de commentaire today</p>
       ) : (
         comments.map((c) => (
-          <div key={c.id} className="comment">
-            <strong>{c.username}</strong>: {c.comment}
-            <p>
-              <small>
+          <div key={c.id} className="comment-list p">
+            <strong>{c.username}</strong> - <small>
                 {c.timestamp && c.timestamp.seconds
                   ? new Date(c.timestamp.seconds * 1000).toLocaleString()
                   : "No timestamp available"}
               </small>
+            <p>
+              {c.comment}
             </p>
           </div>
         ))
@@ -75,13 +75,15 @@ const Comments = ({ selectedWeek, selectedDay }) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Your name"
+          className="comment-input"
         />
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Your comment"
+          className="comment-input"
         />
-        <button type="submit">Post</button>
+        <button type="submit" className="comment-button">Post</button>
       </form>
     </div>
   );

@@ -33,7 +33,7 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className="auth-section">
       <h2>Connexion / Inscription</h2>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email</label>
@@ -59,7 +59,7 @@ const Auth = () => {
           <button type="submit" disabled={isLoading}>Connexion</button>
         </div>
       </form>
-      <p>{status}</p>
+      <p className="auth-status">{status}</p>
     </div>
   );
 };

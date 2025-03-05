@@ -28,9 +28,9 @@ const WorkoutPlan = ({ selectedWeek, setSelectedWeek, selectedDay, setSelectedDa
   };
 
   return (
-    <div className="workout-container">
+    <div className="container">
       <h2>Plan d'entraînement</h2>
-      <div className="select-group">
+      <div className="select-container">
         <select value={selectedWeek} onChange={handleWeekChange}>
           <option value="">-- Sélectionnez une semaine --</option>
           {Object.keys(trainingPlan).map((week) => (

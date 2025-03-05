@@ -16,29 +16,7 @@ body {
   min-height: 100vh;
 }
 
-/* ========== HEADER ========== */
-header {
-  width: 100%;
-  text-align: center;
-  padding: 20px;
-  background: #1c1c1c;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
 
-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #1DB954;
-}
-
-#current-date {
-  font-size: 16px;
-  color: #bbb;
-  margin-top: 5px;
-}
 
 /* ========== FORM STYLING ========== */
 input,
@@ -70,6 +48,8 @@ button {
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease;
+  margin-top: 10px;
+  margin-right:20px;
 }
 
 button:hover {
@@ -107,32 +87,9 @@ button:hover {
   margin-bottom: 20px;
 }
 
-.select-container select {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #1DB954;
-  background: #222;
-  color: #f2f2f2;
-  appearance: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.select-container::after {
-  content: '▼';
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: #1DB954;
-  pointer-events: none;
-}
 
 /* ========== WORKOUT CARDS ========== */
-.workout-container {
+.container {
   width: 90%;
   max-width: 600px;
   margin: 20px auto;
@@ -162,14 +119,18 @@ button:hover {
 }
 
 /* ========== SECTION SPONSORS ========== */
-#sponsors {
+
+.footer-container {
   width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  background: #1c1c1c;
-  padding: 30px 20px;
-  margin-top: 40px;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.5);
 }
+
 
 #sponsors h2 {
   color: #1DB954;
@@ -207,16 +168,7 @@ button:hover {
 
 
 /* ========== UPDATE FORM (Admin Only) ========== */
-.update-container {
-  width: 90%;
-  max-width: 600px;
-  background: #1c1c1c;
-  padding: 35px;
-  margin:1.3em;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
-  text-align: center;
-}
+
 
 .update-container h2 {
   color: #1DB954;
@@ -234,6 +186,11 @@ button:hover {
 }
 
 /* ========== COMMENTS SECTION ========== */
+
+.comments-section{
+  margin-top:4em;
+}
+
 .comment-input {
   width: 100%;
   padding: 10px;
@@ -245,21 +202,6 @@ button:hover {
   margin-top: 10px;
 }
 
-.comment-button {
-  background: #1DB954;
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 12px 20px;
-  font-size: 16px;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-
-.comment-button:hover {
-  background: #17a44f;
-  transform: scale(1.05);
-}
-
 .comment-list p {
   background: #222;
   padding: 12px;
@@ -268,6 +210,29 @@ button:hover {
   margin-bottom: 10px;
   color: #ddd;
 }
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+.image-container img {
+  width: 100%;
+  max-width: 400px; /* Increased from 230px */
+  height: auto;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: contain; /* Keeps images sharp */
+}
+
 
 /* ========== PROGRESS BAR ========== */
 .progress-bar {
