@@ -81,7 +81,6 @@ const Feed = ({ selectedWeek, selectedDay }) => {
       ) : (
         updates.map((update) => (
           <div key={update.id} className="feed-item">
-            <h4>{update.email}</h4>
             <p>{update.updateText}</p>
 
             {update.images && update.images.length > 0 && (

@@ -83,7 +83,7 @@ const Comments = ({ selectedWeek, selectedDay }) => {
           placeholder="Your comment"
           className="comment-input"
         />
-        <button type="submit" className="comment-button">Post</button>
+        <button type="submit" className="comment-button">Envoyer</button>
       </form>
     </div>
   );
