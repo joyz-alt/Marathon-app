@@ -166,16 +166,12 @@ button:hover {
 .day-card {
   min-width: 240px;
   margin-right: 12px;
-  /* ensure consistent card size for mobile */
   background: #292929;
   border: 1px solid #444;
   border-radius: 8px;
   padding: 10px;
-  scroll-snap-align: start;
-  /* if you want snapping */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
-  /* maintain card width when scrolling */
 }
 
 /* Subtle fade-in animation for the entire container */
@@ -254,7 +250,6 @@ button:hover {
   .calendar-carousel-container {
     /* Keep top/bottom padding only, so you don't cause too wide a container on small screens */
     padding: 10px 0;
-    max-width: 100%;
   }
 
   .day-card {
