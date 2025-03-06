@@ -157,7 +157,7 @@ button:hover {
 
   -webkit-overflow-scrolling: touch;
   /* iOS momentum scrolling */
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 
