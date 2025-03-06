@@ -144,44 +144,62 @@ button:hover {
   text-align: center;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
+
 .carousel-scroll-area {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  touch-action: pan-y;
-  overflow-x:scroll; /* horizontal scroll */
-  scroll-snap-type: x mandatory; /* optional for snap-scrolling effect */
-  padding-bottom: 10px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  /* Remove or change this: */
+  /* touch-action: pan-y; */
+  touch-action: pan-x;
+  /* or `auto` if you also want to allow vertical swipes. */
+
   -webkit-overflow-scrolling: touch;
-  outline: 2px dashed red; /* Just for debugging */
+  /* iOS momentum scrolling */
+  padding-bottom: 10px;
 }
+
 
 /* Each day card is a "slide" in the carousel */
 .day-card {
   min-width: 240px;
-  margin-right: 12px; /* ensure consistent card size for mobile */
+  margin-right: 12px;
+  /* ensure consistent card size for mobile */
   background: #292929;
   border: 1px solid #444;
   border-radius: 8px;
   padding: 10px;
-  scroll-snap-align: start; /* if you want snapping */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-  flex-shrink: 0; /* maintain card width when scrolling */
+  scroll-snap-align: start;
+  /* if you want snapping */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  /* maintain card width when scrolling */
 }
 
 /* Subtle fade-in animation for the entire container */
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
+
 @keyframes fadeIn {
-  0%   { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0px); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 .carousel-title {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #1DB954; /* your accent color, or leave white if you prefer */
+  color: #1DB954;
+  /* your accent color, or leave white if you prefer */
 }
 
 
@@ -202,7 +220,9 @@ button:hover {
 }
 
 /* Distance, pace, notes, etc. */
-.day-distance, .day-pace, .day-notes {
+.day-distance,
+.day-pace,
+.day-notes {
   font-size: 14px;
   margin-bottom: 4px;
 }
@@ -220,9 +240,11 @@ button:hover {
 .carousel-scroll-area::-webkit-scrollbar {
   height: 6px;
 }
+
 .carousel-scroll-area::-webkit-scrollbar-track {
   background: #1e1e1e;
 }
+
 .carousel-scroll-area::-webkit-scrollbar-thumb {
   background: #444;
   border-radius: 10px;
@@ -236,9 +258,11 @@ button:hover {
   }
 
   .day-card {
-    min-width: 140px;  /* Instead of 120px */
+    min-width: 140px;
+    /* Instead of 120px */
     padding: 8px;
   }
+
   /* You can keep or slightly adjust other font-sizes too */
 }
 
@@ -256,7 +280,8 @@ button:hover {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 10px auto; /* ✅ Centers in flexbox */
+  margin: 10px auto;
+  /* ✅ Centers in flexbox */
   display: block;
 }
 
@@ -472,8 +497,9 @@ option small {
 
 /* Clickable images in feed */
 .clickable-image {
-  margin:5px;
-  width: 120px; /* Small preview */
+  margin: 5px;
+  width: 120px;
+  /* Small preview */
   height: 180px;
   border-radius: 8px;
   cursor: pointer;
