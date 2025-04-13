@@ -61,7 +61,7 @@ export const trainingPlan = {
         "Mardi": { distance: 8, type: "Vitesse", pace: "4:30 min/km", notes: "8 x 400 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 9, type: "Tempo", pace: "5:10 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4", notes:"gainage - 45sec x4", notes:"fentes - 12 rep x4" },
+        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4, gainage - 45sec x4, fentes - 12 rep x4" },
         "Samedi": { distance: 5, type: "Footing facile", pace: "5:45–6:00 min/km", notes: "" },
         "Dimanche": { distance: 26, type: "Sortie longue", pace: "6:15 min/km", notes: "" }
     },
@@ -70,7 +70,7 @@ export const trainingPlan = {
         "Mardi": { distance: 4, type: "Intervalles", pace: "4:40 min/km", notes: "4 x 1000 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 7, type: "Tempo", pace: "5:15 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4", notes:"gainage - 45sec x4", notes:"fentes - 12 rep x4" },
+        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4, gainage - 45sec x4, fentes - 12 rep x4" },
         "Samedi": { distance: 4, type: "Footing facile", pace: "5:50–6:00 min/km", notes: "" },
         "Dimanche": { distance: 18, type: "Sortie longue", pace: "6:10 min/km", notes: "" }
     },
@@ -79,7 +79,7 @@ export const trainingPlan = {
         "Mardi": { distance: 6, type: "Vitesse", pace: "4:30 min/km", notes: "6 x 600 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 10, type: "Tempo", pace: "5:15 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4", notes:"gainage - 45sec x4", notes:"fentes - 12 rep x4" },
+        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4, gainage - 45sec x4, fentes - 12 rep x4" },
         "Samedi": { distance: 5, type: "Footing facile", pace: "5:50–6:00 min/km", notes: "" },
         "Dimanche": { distance: 28, type: "Sortie longue", pace: "6:15 min/km", notes: "" }
     },
@@ -88,7 +88,7 @@ export const trainingPlan = {
         "Mardi": { distance: 5, type: "Intervalles", pace: "4:20 min/km", notes: "5 x 800 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 9, type: "Tempo", pace: "5:10 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4", notes:"gainage - 45sec x4", notes:"fentes - 12 rep x4" },
+        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4, gainage - 45sec x4, fentes - 12 rep x4" },
         "Samedi": { distance: 5, type: "Footing facile", pace: "5:45–6:00 min/km", notes: "" },
         "Dimanche": { distance: 32, type: "Sortie longue", pace: "6:20 min/km", notes: "" }
     },
@@ -97,7 +97,7 @@ export const trainingPlan = {
         "Mardi": { distance: 4, type: "Vitesse", pace: "4:30 min/km", notes: "4 x 500 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 6, type: "Tempo", pace: "5:15 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4", notes:"gainage - 45sec x4", notes:"fentes - 12 rep x4" },
+        "Vendredi": { distance: 0, type: "Renforcement musculaire", pace:"", notes: "squats - 12 rep x4, gainage - 45sec x4, fentes - 12 rep x4" },
         "Samedi": { distance: 5, type: "Footing facile", pace: "5:50–6:00 min/km", notes: "" },
         "Dimanche": { distance: 18, type: "Sortie longue", pace: "6:10 min/km", notes: "" }
     },
