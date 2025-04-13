@@ -107,6 +107,6 @@ export const trainingPlan = {
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 0, type: "repos", pace: "", notes: "" },
         "Vendredi": { distance: 5, type: "Préparation", pace: "6:00 min/km", notes: "Footing léger" },
-        "Samedi": { distance: 42, type: "JOUR DU MARATHON !", pace: "", notes: "Bonne chance!" },
+        "Samedi": { distance: 42, type: "JOUR DU MARATHON !", pace: "", notes: "Bonne chance!" }
     }
 }    
