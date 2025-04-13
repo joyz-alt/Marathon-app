@@ -8,7 +8,7 @@ import Feed from "./components/Feed";
 import Comments from "./components/Comments";
 import Sponsors from "./components/Sponsors";
 import WelcomeMessage from "./components/WelcomeMessage";
-import CalendarPlan from "./components/CalendarPlan"; // or the correct path
+import CalendarPlan from "./components/CalendarPlan"; 
 
 import "./index.css";
 
@@ -20,11 +20,6 @@ function App() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
-        // We do nothing special here because Auth.js 
-        // already sets the user doc & calls setUser 
-        // after sign-up or login
-        // 
-        // Optionally, we can keep user if we want:
         setUser({ uid: authUser.uid, username: authUser.displayName || "Utilisateur" });
       } else {
         setUser(null);

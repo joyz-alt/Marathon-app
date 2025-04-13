@@ -57,7 +57,7 @@ export const trainingPlan = {
         "Dimanche": { distance: 24, type: "Sortie longue", pace: "6:10 min/km", notes: "" }
     },
     7: {
-        "Lundi": { distance: 8, type: "Footing facile", pace: "5:40 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 8, type: "Vitesse", pace: "4:30 min/km", notes: "8 x 400 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 9, type: "Tempo", pace: "5:10 min/km", notes: "" },
@@ -66,7 +66,7 @@ export const trainingPlan = {
         "Dimanche": { distance: 26, type: "Sortie longue", pace: "6:15 min/km", notes: "" }
     },
     8: {
-        "Lundi": { distance: 6, type: "Footing récup", pace: "5:50 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 4, type: "Intervalles", pace: "4:40 min/km", notes: "4 x 1000 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 7, type: "Tempo", pace: "5:15 min/km", notes: "" },
@@ -75,7 +75,7 @@ export const trainingPlan = {
         "Dimanche": { distance: 18, type: "Sortie longue", pace: "6:10 min/km", notes: "" }
     },
     9: {
-        "Lundi": { distance: 8, type: "Footing facile", pace: "5:40 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 6, type: "Vitesse", pace: "4:30 min/km", notes: "6 x 600 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 10, type: "Tempo", pace: "5:15 min/km", notes: "" },
@@ -84,7 +84,7 @@ export const trainingPlan = {
         "Dimanche": { distance: 28, type: "Sortie longue", pace: "6:15 min/km", notes: "" }
     },
     10: {
-        "Lundi": { distance: 8, type: "Footing récup", pace: "5:50 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 5, type: "Intervalles", pace: "4:20 min/km", notes: "5 x 800 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 9, type: "Tempo", pace: "5:10 min/km", notes: "" },
@@ -93,7 +93,7 @@ export const trainingPlan = {
         "Dimanche": { distance: 32, type: "Sortie longue", pace: "6:20 min/km", notes: "" }
     },
     11: {
-        "Lundi": { distance: 5, type: "Footing facile", pace: "5:40 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 4, type: "Vitesse", pace: "4:30 min/km", notes: "4 x 500 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
         "Jeudi": { distance: 6, type: "Tempo", pace: "5:15 min/km", notes: "" },
@@ -102,12 +102,11 @@ export const trainingPlan = {
         "Dimanche": { distance: 18, type: "Sortie longue", pace: "6:10 min/km", notes: "" }
     },
     12: {
-        "Lundi": { distance: 4, type: "Footing récup", pace: "5:50 min/km", notes: "" },
+        "Lundi": { distance: "45-60 min", type: "Vélo", pace: "Modéré", notes: "Jour de récupération" },
         "Mardi": { distance: 3, type: "Intervalles légers", pace: "4:40 min/km", notes: "3 x 400 m." },
         "Mercredi": { distance: 0, type: "Repos", pace: "", notes: "" },
-        "Jeudi": { distance: 5, type: "Footing facile", pace: "5:40 min/km", notes: "" },
-        "Vendredi": { distance: 0, type: "Repos", pace: "", notes: "" },
-        "Samedi": { distance: 5, type: "Préparation", pace: "6:00 min/km", notes: "Footing léger" },
-        "Dimanche": { distance: 42, type: "JOUR DU MARATHON !", pace: "", notes: "Bonne chance!" }
+        "Jeudi": { distance: 0, type: "Repos", pace: "", notes: "" },
+        "vendredi": { distance: 5, type: "Préparation", pace: "6:00 min/km", notes: "Footing léger" },
+        "Samedi": { distance: 42, type: "JOUR DU MARATHON !", pace: "", notes: "Bonne chance!" }
     }
-};
+}    
